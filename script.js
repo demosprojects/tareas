@@ -3,7 +3,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const nuevaTareaInput = document.getElementById("nueva-tarea");
     const agregarTareaBtn = document.getElementById("agregar-tarea-btn");
     const restablecerTareasBtn = document.getElementById("restablecer-tareas");
-    const mensajeError = document.getElementById("mensaje-error");
 
     // Cargar tareas almacenadas en localStorage
     let tareasGuardadas = JSON.parse(localStorage.getItem("tareas")) || [];
@@ -36,16 +35,13 @@ document.addEventListener("DOMContentLoaded", function () {
     // Evento de clic para el botón "Agregar Tarea"
     function agregarTarea() {
         const nuevaTareaTexto = nuevaTareaInput.value.trim();
-        if (nuevaTareaTexto === "") {
-            // Mostrar mensaje de error si el campo está vacío
-            mensajeError.style.display = "block";
-        } else {
-            // Ocultar mensaje de error si hay texto
-            mensajeError.style.display = "none";
+        if (nuevaTareaTexto !== "") {
             tareasGuardadas.push({ texto: nuevaTareaTexto, completada: false });
             nuevaTareaInput.value = ""; // Limpiar el campo de entrada
             actualizarListaTareas();
             guardarTareas();
+        } else {
+            alert("¡La tarea no puede estar vacía! Por favor, añade una tarea.");
         }
     }
 
@@ -68,4 +64,15 @@ document.addEventListener("DOMContentLoaded", function () {
     // Actualizar la lista de tareas al cargar la página
     actualizarListaTareas();
 });
+
+// Registrar el Service Worker para que la aplicación funcione como una PWA
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('/service-worker.js').then(function(registration) {
+      console.log('ServiceWorker registrado con éxito:', registration.scope);
+    }, function(err) {
+      console.log('Fallo en el registro del ServiceWorker:', err);
+    });
+  });
+}
 
