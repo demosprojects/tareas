@@ -4,25 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="estilo.css">
-    <link rel="icon" type="image/PNG" href="logo2-.png">
-    <link rel="manifest" href="manifest.json">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>Cheklist</title>
+    <link rel="icon" type="image/png" href="logo2-.png">
+    <link rel="manifest" href="/tareas/manifest.json"> <!-- Manifest -->
+    <meta name="theme-color" content="#5e0d7e">
+    <title>Tareas</title>
 </head>
 <body>
     <div class="contenedor">
         <h1>Tareas por hacer:</h1>
         <ul class="lista-tareas" id="lista-tareas">
-            <!-- Las tareas completadas tendrán la clase "completada" -->
         </ul>
-        <input type="text" id="nueva-tarea" placeholder="Agregar nueva tarea"> 
-        <button id="agregar-tarea-btn">Agregar tarea</button> 
+        <input type="text" id="nueva-tarea" placeholder="Agregar nueva tarea">
+        <button id="agregar-tarea-btn">Agregar tarea</button>
         <button id="restablecer-tareas">Borrar tarea</button>
-        
-        <p id="mensaje-error" style="color: red; display: none;">Es necesario agregar una tarea.</p>
     </div>
     <script src="script.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/tareas/service-worker.js')
+                .then(function(reg) {
+                    console.log("Service Worker registrado con éxito.", reg);
+                })
+                .catch(function(err) {
+                    console.log("Error al registrar el Service Worker.", err);
+                });
+        }
+    </script>
 </body>
 </html>
 
