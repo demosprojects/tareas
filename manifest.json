@@ -2,7 +2,7 @@
   "name": "Cheklist App",
   "short_name": "Cheklist",
   "description": "Una lista de tareas por hacer",
-  "start_url": "/index.html",
+  "start_url": "/https://demosprojects.github.io/tareas/",
   "display": "standalone",
   "background_color": "#1a1a1a",
   "theme_color": "#5e0d7e",
