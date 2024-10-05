@@ -10,14 +10,24 @@
     <title>Tareas</title>
 </head>
 <body>
-    <div class="contenedor">
+    <div id="splash-screen">
+        <a href="#" class="cta" id="enter-btn">
+            <span>Acceder a las tareas</span>
+            <svg width="13px" height="10px" viewBox="0 0 13 10">
+                <path d="M1,5 L11,5"></path>
+                <polyline points="8 1 12 5 8 9"></polyline>
+            </svg>
+        </a>
+    </div>
+    <!-- Contenedor principal que se ocultará al principio -->
+    <div class="contenedor" id="contenedor" style="display: none;">
         <h1>Tareas pendientes:</h1>
-        <ul class="lista-tareas" id="lista-tareas">
-        </ul>
+        <ul class="lista-tareas" id="lista-tareas"></ul>
         <input type="text" id="nueva-tarea" placeholder="Agregar nueva tarea">
         <button id="agregar-tarea-btn">Agregar tarea</button>
         <button id="restablecer-tareas">Borrar tarea</button>
     </div>
+
     <script src="script.js"></script>
     <script>
         if ('serviceWorker' in navigator) {
@@ -32,4 +42,5 @@
     </script>
 </body>
 </html>
+
 
