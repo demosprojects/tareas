@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function () {
             actualizarListaTareas();
             guardarTareas();
         } else {
-            alert("¡La tarea no puede estar vacía! Por favor, añade una tarea.");
+            alert("Es necesario agregar una tarea.");
         }
     }
 
