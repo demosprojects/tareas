@@ -3,6 +3,15 @@ document.addEventListener("DOMContentLoaded", function () {
     const nuevaTareaInput = document.getElementById("nueva-tarea");
     const agregarTareaBtn = document.getElementById("agregar-tarea-btn");
     const restablecerTareasBtn = document.getElementById("restablecer-tareas");
+    const splashScreen = document.getElementById("splash-screen");
+    const contenedor = document.getElementById("contenedor");
+    const entrarBtn = document.getElementById("enter-btn"); // Cambiar "entrar-btn" por "enter-btn"
+
+    // Mostrar lista de tareas al presionar el botón "Entrar"
+    entrarBtn.addEventListener("click", function () {
+        splashScreen.style.display = "none";
+        contenedor.style.display = "block";
+    });
 
     // Cargar tareas almacenadas en localStorage
     let tareasGuardadas = JSON.parse(localStorage.getItem("tareas")) || [];
@@ -64,15 +73,4 @@ document.addEventListener("DOMContentLoaded", function () {
     // Actualizar la lista de tareas al cargar la página
     actualizarListaTareas();
 });
-
-// Registrar el Service Worker para que la aplicación funcione como una PWA
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', function() {
-    navigator.serviceWorker.register('/service-worker.js').then(function(registration) {
-      console.log('ServiceWorker registrado con éxito:', registration.scope);
-    }, function(err) {
-      console.log('Fallo en el registro del ServiceWorker:', err);
-    });
-  });
-}
 
