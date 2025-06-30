@@ -1,46 +1,30 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="estilo.css">
-    <link rel="icon" type="image/png" href="logo2-.png">
-    <link rel="manifest" href="/tareas/manifest.json"> <!-- Manifest -->
-    <meta name="theme-color" content="#5e0d7e">
-    <title>Tareas</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="estilo.css">
+  <link rel="icon" type="image/png" href="logo2-.png">
+  <meta name="theme-color" content="#5e0d7e">
+  <title>Tareas</title>
 </head>
 <body>
-    <div id="splash-screen">
-        <a href="#" class="cta" id="enter-btn">
-            <span>Acceder a las tareas</span>
-            <svg width="13px" height="10px" viewBox="0 0 13 10">
-                <path d="M1,5 L11,5"></path>
-                <polyline points="8 1 12 5 8 9"></polyline>
-            </svg>
-        </a>
-    </div>
-    <!-- Contenedor principal que se ocultará al principio -->
-    <div class="contenedor" id="contenedor" style="display: none;">
-        <h1>Tareas pendientes:</h1>
-        <ul class="lista-tareas" id="lista-tareas"></ul>
-        <input type="text" id="nueva-tarea" placeholder="Agregar nueva tarea">
-        <button id="agregar-tarea-btn">Agregar tarea</button>
-        <button id="restablecer-tareas">Borrar tarea</button>
-    </div>
+  <!-- Pantalla de clave -->
+  <div id="clave-screen">
+    <h2>Ingresá la clave para acceder</h2>
+    <input type="password" id="clave-input" placeholder="Clave de acceso">
+    <button id="validar-clave">Ingresar</button>
+  </div>
 
-    <script src="script.js"></script>
-    <script>
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('/tareas/service-worker.js')
-                .then(function(reg) {
-                    console.log("Service Worker registrado con éxito.", reg);
-                })
-                .catch(function(err) {
-                    console.log("Error al registrar el Service Worker.", err);
-                });
-        }
-    </script>
+  <!-- Contenedor principal oculto hasta validar clave -->
+  <div class="contenedor" id="contenedor" style="display: none;">
+    <h1>Tareas pendientes:</h1>
+    <ul class="lista-tareas" id="lista-tareas"></ul>
+    <input type="text" id="nueva-tarea" placeholder="Agregar nueva tarea">
+    <button id="agregar-tarea-btn">Agregar tarea</button>
+    <button id="restablecer-tareas">Borrar tarea</button>
+  </div>
+
+  <script type="module" src="script.js"></script>
 </body>
 </html>
-
-
