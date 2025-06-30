@@ -1,164 +1,463 @@
 /* Estilos generales */
+:root {
+  --color-primario: #6a11cb;
+  --color-secundario: #2575fc;
+  --color-fondo: #f8f9fa;
+  --color-texto: #2c3e50;
+  --color-destacado: #ff6b6b;
+  --color-exito: #1dd1a1;
+  --color-sombra: rgba(0, 0, 0, 0.1);
+  --gradiente-principal: linear-gradient(135deg, var(--color-primario) 0%, var(--color-secundario) 100%);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    background-color: #1a1a1a;
-    color: white;
-}
-/* Estilos para la pantalla de bienvenida */
-#splash-screen {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background-color: #2c3e50;
-    color: #5e0d7e;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Roboto', sans-serif;
-    z-index: 1000;
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(106, 17, 203, 0.05) 0%, rgba(106, 17, 203, 0.05) 90%),
+    radial-gradient(circle at 90% 80%, rgba(37, 117, 252, 0.05) 0%, rgba(37, 117, 252, 0.05) 90%);
 }
 
-/* Estilos del botón de acceso */
-.cta {
-    position: relative;
-    margin: auto;
-    padding: 19px 22px;
-    transition: all 0.2s ease;
-    text-decoration: none;
-    font-weight: bold;
-    color: black;
+/* Pantalla de clave */
+#clave-screen {
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  max-width: 450px;
+  width: 100%;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  animation: fadeIn 0.8s ease-out;
 }
 
-.cta:before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: block;
-    border-radius: 28px;
-    background: rgba(255, 171, 157, 0.5);
-    width: 56px;
-    height: 56px;
-    transition: all 0.3s ease;
+#clave-screen h2 {
+  margin-bottom: 25px;
+  color: var(--color-primario);
+  font-size: 1.8rem;
+  font-weight: 700;
+  background: var(--gradiente-principal);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
-.cta span {
-    position: relative;
-    font-size: 16px;
-    line-height: 18px;
-    font-weight: 900;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    vertical-align: middle;
+#clave-input {
+  width: 100%;
+  padding: 15px 20px;
+  margin-bottom: 20px;
+  border: 2px solid #e0e0e0;
+  border-radius: 50px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background-color: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 4px 6px var(--color-sombra);
 }
 
-.cta svg {
-    position: relative;
-    top: 0;
-    margin-left: 10px;
-    fill: none;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    stroke: #111;
-    stroke-width: 2;
-    transform: translateX(-5px);
-    transition: all 0.3s ease;
+#clave-input:focus {
+  outline: none;
+  border-color: var(--color-primario);
+  box-shadow: 0 0 0 3px rgba(106, 17, 203, 0.2);
+  transform: translateY(-2px);
 }
 
-.cta:hover:before {
-    width: 100%;
-    background: #ffab9d;
+#validar-clave {
+  background: var(--gradiente-principal);
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(106, 17, 203, 0.4);
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
-.cta:hover svg {
-    transform: translateX(0);
+#validar-clave:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(106, 17, 203, 0.6);
 }
 
-.cta:active {
-    transform: scale(0.96);
-}
-
-/* Contenedor del splash screen */
-.splash-screen {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: #5e0d7e;
-}
-
-.splash-screen h1 {
-    color: white;
-    font-size: 2rem;
-}
-
-.splash-screen button {
-    padding: 10px 20px;
-    background-color: white;
-    color: #5e0d7e;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
+#validar-clave:active {
+  transform: translateY(1px);
 }
 
 /* Contenedor principal */
 .contenedor {
-    width: 100%;
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 20px;
-    text-align: center;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+  padding: 30px;
+  width: 100%;
+  max-width: 600px;
+  animation: slideUp 0.8s ease-out;
+  position: relative;
+  overflow: hidden;
+}
+
+.contenedor::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 10px;
+  background: var(--gradiente-principal);
+}
+
+.contenedor h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: var(--color-primario);
+  font-size: 2.2rem;
+  font-weight: 800;
+  position: relative;
+  padding-bottom: 15px;
+}
+
+.contenedor h1::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: var(--gradiente-principal);
+  border-radius: 2px;
 }
 
 /* Lista de tareas */
 .lista-tareas {
-    list-style: none;
-    padding: 0;
-    margin-bottom: 20px;
+  list-style: none;
+  margin-bottom: 30px;
+  max-height: 400px;
+  overflow-y: auto;
+  padding-right: 10px;
 }
 
-/* Input de tarea */
+.lista-tareas::-webkit-scrollbar {
+  width: 8px;
+}
+
+.lista-tareas::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.lista-tareas::-webkit-scrollbar-thumb {
+  background: var(--color-primario);
+  border-radius: 10px;
+}
+
+.lista-tareas li {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 15px 20px;
+  margin-bottom: 15px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  border-left: 4px solid var(--color-primario);
+  position: relative;
+  overflow: hidden;
+}
+
+.lista-tareas li::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(106, 17, 203, 0.1) 0%, rgba(255, 255, 255, 0) 100%);
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+}
+
+.lista-tareas li:hover {
+  transform: translateX(5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.lista-tareas li:hover::before {
+  transform: translateX(0);
+}
+
+/* Estilo para el checkbox personalizado */
+.tarea-checkbox {
+  position: relative;
+  margin-right: 15px;
+  cursor: pointer;
+}
+
+.tarea-checkbox input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkmark {
+  position: relative;
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  background-color: #fff;
+  border: 2px solid #ddd;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.tarea-checkbox:hover .checkmark {
+  border-color: var(--color-primario);
+  transform: scale(1.05);
+}
+
+.tarea-checkbox input:checked ~ .checkmark {
+  background-color: var(--color-exito);
+  border-color: var(--color-exito);
+  animation: pulse 0.5s;
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+  left: 8px;
+  top: 4px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.tarea-checkbox input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Texto de la tarea */
+.tarea-texto {
+  flex-grow: 1;
+  margin-right: 15px;
+  transition: all 0.3s ease;
+  position: relative;
+  padding-left: 10px;
+}
+
+.lista-tareas li.completada .tarea-texto {
+  text-decoration: line-through;
+  color: #95a5a6;
+}
+
+/* Estado completado */
+.lista-tareas li.completada {
+  background: #f8f9fa;
+  border-left-color: var(--color-exito);
+  opacity: 0.9;
+}
+
+.lista-tareas li.completada::before {
+  background: linear-gradient(90deg, rgba(29, 209, 161, 0.1) 0%, rgba(255, 255, 255, 0) 100%);
+}
+
+/* Acciones */
+.lista-tareas li .acciones {
+  display: flex;
+  gap: 10px;
+}
+
+.lista-tareas li button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 5px;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.lista-tareas li button.completar {
+  color: var(--color-exito);
+}
+
+.lista-tareas li button.eliminar {
+  color: var(--color-destacado);
+}
+
+.lista-tareas li button:hover {
+  background: rgba(0, 0, 0, 0.05);
+  transform: scale(1.1);
+}
+
+/* Formulario de nueva tarea */
 #nueva-tarea {
-    width: calc(100% - 20px);
-    padding: 10px;
-    margin-bottom: 10px;
-    border: none;
-    border-radius: 5px;
+  width: 100%;
+  padding: 15px 20px;
+  margin-bottom: 20px;
+  border: 2px solid #e0e0e0;
+  border-radius: 50px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background-color: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 4px 6px var(--color-sombra);
+}
+
+#nueva-tarea:focus {
+  outline: none;
+  border-color: var(--color-primario);
+  box-shadow: 0 0 0 3px rgba(106, 17, 203, 0.2);
+  transform: translateY(-2px);
 }
 
 /* Botones */
-button {
-    width: 48%;
-    padding: 10px;
-    margin-bottom: 10px;
-    background-color: #5e0d7e;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+#agregar-tarea-btn, #restablecer-tareas {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
-/* Estilos para pantallas pequeñas */
+#agregar-tarea-btn {
+  background: var(--gradiente-principal);
+  color: white;
+  box-shadow: 0 4px 15px rgba(106, 17, 203, 0.4);
+}
+
+#agregar-tarea-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(106, 17, 203, 0.6);
+}
+
+#agregar-tarea-btn:active {
+  transform: translateY(1px);
+}
+
+#restablecer-tareas {
+  background: white;
+  color: var(--color-destacado);
+  border: 2px solid var(--color-destacado);
+}
+
+#restablecer-tareas:hover {
+  background: var(--color-destacado);
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+}
+
+#restablecer-tareas:active {
+  transform: translateY(1px);
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Efecto de confeti */
+.confeti {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: var(--color-exito);
+  opacity: 0;
+  animation: confeti-fall 2s ease-out forwards;
+}
+
+@keyframes confeti-fall {
+  0% {
+    transform: translateY(-100px) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(500px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Responsive */
 @media (max-width: 600px) {
-    #nueva-tarea {
-        width: 100%;
-    }
-
-    button {
-        width: 100%;
-        margin-bottom: 5px;
-    }
+  #clave-screen, .contenedor {
+    padding: 25px;
+  }
+  
+  .contenedor h1 {
+    font-size: 1.8rem;
+  }
+  
+  .lista-tareas li {
+    padding: 12px 15px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  
+  .lista-tareas li .acciones {
+    align-self: flex-end;
+  }
 }
-
-
